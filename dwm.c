@@ -706,6 +706,10 @@ drawbar(Monitor *m)
 {
 	int x, xx, w, dx;
 	unsigned int i, occ = 0, urg = 0;
+
+	/* used by monocle-count */
+        unsigned int a = 0, s = 0;
+
 	Client *c;
 
 	dx = (drw->fonts[0]->ascent + drw->fonts[0]->descent + 2) / 4;
@@ -724,6 +728,22 @@ drawbar(Monitor *m)
 		           occ & 1 << i, urg & 1 << i);
 		x += w;
 	}
+
+	/* monocle-count part */
+	if(m->lt[m->sellt]->arrange == monocle) {
+		for(a = 0, s = 0, c= nexttiled(m->clients); c; c= nexttiled(c->next), a++) {
+			if(c == m->stack) {
+				s = a;
+			}
+		}
+
+		if(!s && a) {
+			s = a;
+		}
+
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d/%d]", s, a);
+	}
+
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, &scheme[SchemeNorm]);
 	drw_text(drw, x, 0, w, bh, m->ltsymbol, 0);
@@ -1123,8 +1143,11 @@ monocle(Monitor *m)
 	for (c = m->clients; c; c = c->next)
 		if (ISVISIBLE(c))
 			n++;
-	if (n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+
+	// following comment used by monocle-count patch
+	//if (n > 0) /* override layout symbol */
+	//	snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 }
