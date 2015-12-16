@@ -16,6 +16,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
+static const float scratchpadheight = 0.9;      /* height of scratchpad window in percent compared to monitor height */
+static const float scratchpadwidth  = 0.9;      /* width of scratchpad window in percent compared to monitor width */
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
