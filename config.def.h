@@ -61,7 +61,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *termpresentationcmd[]  = { "urxvt", "--font", "xft:mono:size=25", NULL };
 static const char scratchpadname[] = "itreallywhipsthescratchpadsass";
-static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-e", "vim", "~/scratchpad/index.wiki", NULL };
+static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-e", "vim", "/opt/scratchpad/index.wiki", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
