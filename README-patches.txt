@@ -5,7 +5,8 @@ My order of patching:
 3) shiftview
 4) monocle-count
 5) pertag
-6) my personal config
+6) readme (for this readme file)
+7) my personal config
 
 To start patching switch to branch 'my-dwm-6.1' and run 'rebase -i <branchname-for-patch>' for each patch.
 
